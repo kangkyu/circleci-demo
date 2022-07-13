@@ -2,12 +2,18 @@ version: 2.1
 
 orbs:
   aws-sam-serverless: circleci/aws-sam-serverless@3.0
-# jobs:
+jobs:
 #   test_my_api:
 #     docker:
 #       - image:
 #     steps:
 #       - run:
+  build_app:
+    executor: aws-sam-serverless/default
+    steps:
+      - checkout
+      - aws-sam-serverless/install
+      - run: sam build
 workflows:
   build_and_deploy:
     jobs:
