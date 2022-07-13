@@ -27,12 +27,11 @@ workflows:
       #     requires:
       #       - deploy-staging
       - build_app
-
       - aws-sam-serverless/deploy:
           context: aws-credentials-context
           name: deploy-production
           # requires:
           #   - test_my_api
-          s3-bucket: <%= ENV['AWS_ARTIFACT_BUCKET'] %>
+          s3-bucket: hello-world-here
           stack-name: production-stack
           template: ./template.yaml
