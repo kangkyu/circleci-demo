@@ -7,7 +7,7 @@ jobs:
 #     docker:
 #       - image:
 #     steps:
-#       - run:
+#       - run: go test ./...
   build_app:
     executor: aws-sam-serverless/default
     steps:
@@ -30,8 +30,9 @@ workflows:
       - aws-sam-serverless/deploy:
           context: aws-credentials-context
           name: deploy-production
-          # requires:
+          requires:
           #   - test_my_api
+            - build_app
           s3-bucket: hello-world-here
           stack-name: production-stack
           template: ./template.yaml
