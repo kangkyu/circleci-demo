@@ -35,4 +35,3 @@ workflows:
           s3-bucket: hello-world-here
           stack-name: production-stack
           template: ./template.yaml
-          build-dir: hello-world/
